@@ -1,4 +1,5 @@
-Architecture for Virtual Classroom 
+
+ Architecture for Virtual Classroom 
 
 	By:
 		Sneha Potluri (19XJ1A0572)
@@ -13,31 +14,85 @@ We will be using a java gui based front end , further we will be connecting the 
 
 for the database : We will be implementing a database using mysql: tables ,schemas and multiple databases.
 
- front end:
+
+
+
+
+ ( TREE DIAGRAM PICTURE) 
+
+
+
+ front end :
+
  a) pages:
     i) HOMEPAGE : This would be the very first thing that appears when a user runs the application.
-        -> gives you the choice of choosing between your login options 
-        -> student or faculty member 
+        ->choose between logging in as a student or a faculty member 
+        
     ii) upon clicking either faculty or student you will be directed to the student/faculty login page
         STUDENT LOGIN PAGE:
+          -> a student will be asked to provide their student id/rollno  and password 
+         -> if the password and id are present in the database , and match the login requirements 
+               The user will be directed to the student dashboard.
+         -> a user can also find a signup option on the login page in  order to enroll themselves in a                          
+               New course by providing details(more about this in the student signup)
+       STUDENT SIGNUP PAGE:
+        -> a student can signup and enroll in their course and access course content.
+       ->  fields - name , year , rollno, course
+       -> after signing up a user will be able to access the student dashboard. 
+      STUDENT HOMEPAGE :
+       -> a student can view their courses as different tabs with the java tabbed pane.
+       -> they can view the upcoming assignments and view their  course timetable.        
          
-        
- 
- 
- 
+      FACULTY LOGIN :
+        -> a faculty member trying to login must enter their unique id and password in order to access their faculty dashboard. 
+
+    FACULTY DASHBOARD:
+      -> faculty members can view their courses just as tabbed panes similar to the student dashboard.
+ -> they can view their timetable for the day as well as upload and edit assignments and grades respectively.
+      
 b. Backend
 Since we are using a desktop application and not a web application, we have not added much backend to our project. 
 The backend aspect is open to third party applications. 
  
- c. Database
-Tables and their names and purpose
+ c.  Database
+       { we will be maintaining separate databases as that  makes it easier for data abstraction and  efficiency  is optimised as we  handle smaller tables};
 
+            
+Student database: 
+            tables :
+            1.1  student_details  :  contains the  student signup information
+                              - name       varchar
+                             - year           int 
+                             - rollno         unique varchar, primary key 
+                             - course       varchar(cse or eee)
+                           
+            1.2 Student _login : contains the login essentials          
+                            - rollno          unique varchar ( connection between two tables)
+                             - pwd           varchar
+             1.3 grades 
+                    Rollno-      
+                   ( display with the faculty table columns )
+                   Cgpa - 
 
+ 2. faculty database
+ 
+         2.1 fac_details
+              -> id’s             primary  unique varchar ( connection between login and details)
+             -> course varchar(cse or eee) 
+            -> name     varchar
+           -> pwd        varchar 
 
+     2.2 
+          Fac_login
+          -> id          unique varchar 
+           -> pwd      varchar 
+2.3  fac_grade
+        -> roll no  
+         -> cgpa
  
  
  
- 
+
  
  
  
