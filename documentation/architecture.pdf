@@ -1,15 +1,56 @@
-Architecture for Virtual Classroom (Assignment 7)
+overview :
 
- By:
-     Sneha Potluri (19XJ1A0572)
-     Sahithi 
-     Manushree 
+This is an attempt at creating a virtual platform that encompasses all academic schedules and coursework ensuring a holistic online learning experience.
+We’ll be designing an application that enables the academic community at MU to  have an uncomplicated mechanism while accessing academics.
 
-a. Frontend Design
- i. Pages 
+we will be using a java gui based front end , further we will be connecting the java front end using java connectors and ensuring a dynamic data access and display mechanism.
 
-Backend Design 
+for the database : we will be impementing a database using mysql: tables ,schemas and mutliple databases.
 
-Database Design 
 
-Overview
+ front end:
+ a) pages:
+    i) HOMEPAGE : This woud be the very first thing that appear when a user runs the project. 
+        -> gives you the choice of choosing between your login options 
+        -> student or faculty member 
+    ii) upon clicking either faculty or student you will be directed to the student/faculty login page
+        STUDENT LOGIN PAGE 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ database:
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ backend :
+ 
