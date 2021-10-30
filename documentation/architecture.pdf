@@ -1,41 +1,39 @@
 Architecture for Virtual Classroom 
+
 	By:
 		Sneha Potluri (19XJ1A0572)
-		Sahithi
+		Sahithi Josyula (19XJ1A0562)
 		Manushree 
-overview :
+Overview 
 
 This is an attempt at creating a virtual platform that encompasses all academic schedules and coursework ensuring a holistic online learning experience.
 We’ll be designing an application that enables the academic community at MU to  have an uncomplicated mechanism while accessing academics.
 
-we will be using a java gui based front end , further we will be connecting the java front end using java connectors and ensuring a dynamic data access and display mechanism.
+We will be using a java gui based front end , further we will be connecting the java front end using java connectors and ensuring a dynamic data access and display mechanism.
 
-for the database : we will be implementing a database using mysql: tables ,schemas and mutliple databases.
+for the database : We will be implementing a database using mysql: tables ,schemas and multiple databases.
 
-HI SAHITHI THIS IS SNEHA
  front end:
  a) pages:
-    i) HOMEPAGE : This woud be the very first thing that appear when a user runs the project. 
+    i) HOMEPAGE : This would be the very first thing that appears when a user runs the application.
         -> gives you the choice of choosing between your login options 
         -> student or faculty member 
     ii) upon clicking either faculty or student you will be directed to the student/faculty login page
         STUDENT LOGIN PAGE:
+         
         
  
  
  
+b. Backend
+Since we are using a desktop application and not a web application, we have not added much backend to our project. 
+The backend aspect is open to third party applications. 
  
- 
- database:
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ c. Database
+Tables and their names and purpose
+
+
+
  
  
  
@@ -50,7 +48,13 @@ HI SAHITHI THIS IS SNEHA
  
  
  
- backend :
+ 
+ 
+ 
+ 
+ 
+ 
+
  
 
 
