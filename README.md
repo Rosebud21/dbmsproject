@@ -1,2 +1,2 @@
 # dbmsproject
-sneha, sahithi, manu /virtual classroom
+sneha, sahithi, manushre /virtual classroom
