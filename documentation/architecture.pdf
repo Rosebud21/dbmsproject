@@ -46,10 +46,12 @@ iii)  DB connectors - How we connect My SQL(backend) with our front end (java)
 ->And then a loop can be created to display the data from the database.
 
 
+	
 	b. Backend
 		Since we are using a desktop application and not a web application, we have not added much backend to our project. 
 		The backend aspect is open to third party applications. 
  
+	
 	c.  Database
        		We will be maintaining separate databases as that makes it easier for data abstraction and efficiency is optimised when we handle smaller tables.
 
