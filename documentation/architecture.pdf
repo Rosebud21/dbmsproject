@@ -3,7 +3,7 @@ Architecture for Virtual Classroom
 	By:
 		Sneha Potluri (19XJ1A0572)
 		Sahithi Josyula (19XJ1A0562)
-		Manushree 
+		Enuganti Manushree (19XJ1A0523)
 
 	a. Frontend
 		i. Pages
@@ -45,21 +45,19 @@ Architecture for Virtual Classroom
             	1.2 Student_login: contains the login essentials          
                             - rollno        unique varchar, foreign key(connection between two tables) 
                             - pwd           varchar
-             	1.3 Grades: faculty can upload grades for the student to see 
-                    Rollno-      
-                   (display with the faculty table columns )
-                   Cgpa - 
+               
+                                            
 
  		2. Faculty database
  		Tables:
          	2.1 Faculty_details: contains the faculty details, used at login time. 
-              			- id      primary key unique varchar (connection between login and details)
+              			- id      primary key unique varchar
              			- course  varchar(cse or eee) 
             			- name    varchar (50)
-           			- pwd     varchar (9)
+           			             - pwd     varchar (9)
 		2.2  Faculty_grade: enables faculty to give students grades 
-        			- roll no    varchar (8)
-         			- cgpa       int
+        			- roll no    foreign key  UNIQUE varchar (8) { uses student rollno as           primary key to display grade on page)}
+         			- cgpa      int 
  
  
  	d. Overview 
@@ -77,8 +75,7 @@ Architecture for Virtual Classroom
  
  TREE DIAGRAM PICTURE
  
- 
- 
+
  
  
 
