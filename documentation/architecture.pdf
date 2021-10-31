@@ -46,19 +46,16 @@ Architecture for Virtual Classroom
                             - rollno        unique varchar, foreign key(connection between two tables) 
                             - pwd           varchar
                
-                                            
-
  		2. Faculty database
  		Tables:
          	2.1 Faculty_details: contains the faculty details, used at login time. 
               			- id      primary key unique varchar
              			- course  varchar(cse or eee) 
             			- name    varchar (50)
-           			             - pwd     varchar (9)
+           		        - pwd     varchar (9)
 		2.2  Faculty_grade: enables faculty to give students grades 
         			- roll no    foreign key  UNIQUE varchar (8) { uses student rollno as           primary key to display grade on page)}
          			- cgpa      int 
- 
  
  	d. Overview 
 
@@ -70,10 +67,7 @@ Architecture for Virtual Classroom
 	i. We will be using a java gui based front end. Further, we will be connecting the java front end using java connectors and ensuring a dynamic data access and display mechanism.
 	   For the database, we will be implementing a database using mysql, consisting of tables ,schemas and multiple databases.
 
-
- 
- 
- TREE DIAGRAM PICTURE
+	iii. TREE DIAGRAM PICTURE
  
 
  
