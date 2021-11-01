@@ -59,6 +59,7 @@ Architecture for Virtual Classroom
 			    - course 
 			    - rollno
 			    - id
+			    - date
 			    - assignment 
                
  		2. Faculty database
@@ -74,6 +75,7 @@ Architecture for Virtual Classroom
 		2.3 Course_materials:
 				- course
 				- id
+				- date
 				- course_material
  
  	d. Overview 
