@@ -6,12 +6,12 @@ Architecture for Virtual Classroom
 		Enuganti Manushree (19XJ1A0523)
 
 	a. Frontend
-		i. Pages
+		i and ii. Pages and their Features 
 
-                   HOMEPAGE: This is the very first thing that appears when a user runs the application.
+                HOMEPAGE: This is the very first thing that appears when a user runs the application.
              	Here, you can choose between logging in as a student or a faculty member. 
              	Upon clicking either faculty or student you will be directed to the respective login page.
-        	        STUDENT LOGIN PAGE:
+        	STUDENT LOGIN PAGE:
           	-> The student will be asked to provide their student id/rollno .and password 
          	-> If the password and id are present in the database, and match the login requirements, the user will be directed to the student dashboard.
          	-> The user can also find a signup option on the login page in  order to enroll themselves in a new course by providing more details (more about this in the student signup).
@@ -28,30 +28,19 @@ Architecture for Virtual Classroom
       		-> Faculty members can view their courses as tabbed panes similar to the student dashboard.
  		-> They can view their timetable for the day, their grades, and see what assignments they have due. 
       
+		iii. DB connectors - How we will connect My SQL(backend) with our front end (java)
+ 		- First we import the library from our database then we import the class with a table model. 
+		- A catch block needs to be added here for errors and expectations. 
+		- Then the driver class needs to be loaded in which connection object should be created for My SQL. 
+		- A statement object should be created after. 
+		- Now we must  pass SQL queries through a table model after which all the executable queries are stated. 
+		- All the results for the queries passed are then stored in ResultSet. 
+		- And then a loop can be created to display the data from the database.
 
-iii)  DB connectors - How we connect My SQL(backend) with our front end (java)
- 
--> First we import the library from our database then we import the class with a table model. 
-
- ->A catch block needs to be added here for errors and expectations. 
- 
-->Then the driver class needs to be loaded in which connection object should be created for My SQL. 
-
-->A statement object should be created after. 
-
-->Now we must  pass SQL queries through a table model after which all the executable queries are stated. 
-
-->All the results for the queries passed are then stored in ResultSet. 
-
-->And then a loop can be created to display the data from the database.
-
-
-	
 	b. Backend
 		Since we are using a desktop application and not a web application, we have not added much backend to our project. 
 		The backend aspect is open to third party applications. 
  
-	
 	c.  Database
        		We will be maintaining separate databases as that makes it easier for data abstraction and efficiency is optimised when we handle smaller tables.
 
@@ -87,9 +76,11 @@ iii)  DB connectors - How we connect My SQL(backend) with our front end (java)
 
 	i. We will be using a java gui based front end. Further, we will be connecting the java front end using java connectors and ensuring a dynamic data access and display mechanism.
 	   For the database, we will be implementing a database using mysql, consisting of tables ,schemas and multiple databases.
-
+	
+	ii. CONNECTOR DIAGRAM
+		(attached in the documentation directory as a jpg with this name)
 	iii. TREE DIAGRAM PICTURE
-               (attached in the documentation directory)
+               (attached in the documentation directory as a jpg with this name)
 
  
  
