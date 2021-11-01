@@ -73,8 +73,8 @@ Architecture for Virtual Classroom
         			- roll no    foreign key  UNIQUE varchar (8) { uses student rollno as           primary key to display grade on page)}
          			- cgpa      int 
 		2.3 Course_materials:
-				- course
-				- id
+				- course		(foreign key)
+				- id			(primary key)
 				- date
 				- course_material
  
