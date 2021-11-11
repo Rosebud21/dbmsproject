@@ -1,5 +1,5 @@
 
-1.trying to connect mysql with the java gui frontend that we have 
+1. To connect mysql with the java gui frontend that we have 
    With jdbc drivers .
 
-2. Creating tables and databases that interact with the gui to insert , select and display data on the gui
+2. Creating tables and databases that interact with the gui to insert , select and display data on the gui.
