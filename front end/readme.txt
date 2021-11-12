@@ -2,8 +2,9 @@ FRONT-END
 
 1. we have used a java gui based frontend which encompasses jtables, jframes and jpanels.
  
- HOME PAGE
+ HOME PAGE:
  
+  the gui components: 
  -we tried to create a straighforward home page using 2 JPanels.
  - one Panel to display the IMAGE and the other panel contains two buttons 
  - the user can view two buttons
@@ -13,7 +14,7 @@ FRONT-END
     b.Faculty  
     -> clickling on the faculty button will take you to the faculty login page.
 
- STUDENT LOGIN PAGE 
+ STUDENT LOGIN PAGE:
  
   the gui components :
  - we've set the background color for the jpanel as  dark blue.
@@ -27,7 +28,8 @@ FRONT-END
  - a jbutton named "back " takes the user back to the home page
  - a Joptionpane appears once the login or signup is successful 
  
-FACULTY LOGIN PAGE 
+FACULTY LOGIN PAGE:
+
  the gui components: 
  - we've set the background color for the jpanel as dark blue.
  - a jlabel that reads " Faculty login "
@@ -39,6 +41,7 @@ FACULTY LOGIN PAGE
  - a Joptionpane appears once the login or signup is successful 
 
  STUDENT SIGNUP PAGE:
+  
  the gui components :
  - we've set the background color for the jpanel as  dark blue.
  - a jlabel that reads "student Signup "
