@@ -4,13 +4,13 @@ FRONT-END
  
  HOME PAGE:
  
-  the gui components: 
+  the gui components:
  -we tried to create a straighforward home page using 2 JPanels.
  - one Panel to display the IMAGE and the other panel contains two buttons 
  - the user can view two buttons
     we've used 2 Jbuttons which are connected to the login pages of faculty and student.
     a.Student 
-    -> clicking on the student button will take you to the student Login page . 
+    -> clicking on the student button will take you to the student Login page. 
     b.Faculty  
     -> clickling on the faculty button will take you to the faculty login page.
 
