@@ -1,7 +1,23 @@
-import java.sql.*;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.MalformedURLException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+
 import javax.swing.JOptionPane;
  
 public class Student_login1 extends JFrame implements ActionListener {
@@ -72,58 +88,76 @@ public class Student_login1 extends JFrame implements ActionListener {
    }
   
     @Override
-    public void actionPerformed(ActionEvent ae) 
-       {
-       //for login button
-        if(ae.getSource()==b1)
-       { 
-        //System.out.println("entered");
-        String password = p1.getText();
-         String id = ta.getText();
-         boolean found=false;
-          
-            
-         try{
-            Class.forName("com.mysql.jdbc.Driver");  
-               Connection con=DriverManager.getConnection ("jdbc:mysql://localhost:3306/student","root","ivansj2102");   
-           Statement stmt=con.createStatement();  
-            ResultSet rs=stmt.executeQuery("select * from Student_signup");  
-       while(rs.next())
-        {  
-           String rollno=rs.getString(2);
-          String pwd=rs.getString(5);
-          if(rollno.equals(id) && pwd.equals(password))
-             {
-                 JOptionPane.showMessageDialog(null,"LOGIN SUCCESSFUL");
-                 student_page page = new student_page();
-                 page.setVisible(true);
-                 found = true;
-                 frame.dispose();
-                 break;
-              
-            }
-          }
-           con.close();  
-            }
-         
-          catch(Exception ae1)
-          { 
-            System.out.println(ae1);
-             }  
- 
-          if(found == false)
-          {
-            JOptionPane.showMessageDialog(null,"LOGIN FAILED.TRY AGAIN");    
-          }
-       }
- 
-       //signupbutton
-       if(ae.getSource() == b2){
-                frame.dispose();
-                Student_signup2 ss = new Student_signup2();
-                ss.setVisible(true);
-        }
+    public void actionPerformed(ActionEvent ae){
 
+       //for login button
+        if(ae.getSource()==b1){ 
+			System.out.println("entered");
+			String password = p1.getText();
+			String id = ta.getText();
+			System.out.println(id + " " + password);
+			//Get Response  
+			try {
+				URL urlForGetRequest = new URL("http://localhost:5499/student/login/?id="+id.toString()+"&pass="+password);
+				String readLine = null;
+				HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+				conection.setRequestMethod("GET");
+				int responseCode = conection.getResponseCode();
+				System.out.println(responseCode);
+
+				if (responseCode == HttpURLConnection.HTTP_OK) {
+					BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
+					StringBuffer response = new StringBuffer();
+					while ((readLine = in .readLine()) != null) {
+						response.append(readLine);
+					} 
+					in .close();
+					String status = response.toString();
+                              System.out.println(status);
+                              if(status.toString().equals("True")){
+                                    System.out.println("ok!!!");
+                                    System.out.println(conection.getHeaderField("name"));
+                                    String name = conection.getHeaderField("name");
+
+                                    System.out.println(conection.getHeaderField("rollnumber"));
+                                    String rollnumber = conection.getHeaderField("rollnumber");
+
+                                    System.out.println(conection.getHeaderField("password"));
+                                    String pass = conection.getHeaderField("password");
+
+                                    System.out.println(conection.getHeaderField("year"));
+                                    String year = conection.getHeaderField("year");
+
+                                    System.out.println(conection.getHeaderField("branch"));
+                                    String branch = conection.getHeaderField("branch");
+
+                                    JOptionPane.showMessageDialog(null,"LOGIN SUCCESSFUL");
+
+                                    Student s = new Student(rollnumber, name, pass, Integer.parseInt(year), branch);
+                                    student_page page = new student_page(s);
+
+                                    page.setVisible(true);
+                                    frame.dispose();
+                              }
+                              else{
+                                    System.out.println("errorrrr!!!");
+                                    JOptionPane.showMessageDialog(null,"LOGIN FAILED.TRY AGAIN");    
+                              }
+				} else {
+					System.out.println("GET NOT WORKED");
+				}
+			} 
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+      	}
+       //signupbutton
+		if(ae.getSource() == b2){
+			frame.dispose();
+			Student_signup2 ss = new Student_signup2();
+			ss.setVisible(true);
+		}
        //backbutton
        if(ae.getSource() == b3){
              home_page page = new home_page();

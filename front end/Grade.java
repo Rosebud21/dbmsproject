@@ -139,11 +139,13 @@ public class Grade extends JFrame {
                 return types [columnIndex];
             }
         });
+        /*
         jTable1.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 jTable1MouseClicked(evt);
             }
         });
+        */
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("UPDATE GRADE");
@@ -182,6 +184,7 @@ public class Grade extends JFrame {
          }     
     }                                        
 
+    /*
     private void jTable1MouseClicked(MouseEvent evt) {                                     
     int selectedRow;
         selectedRow = jTable1.getSelectedRow();
@@ -194,7 +197,8 @@ public class Grade extends JFrame {
                 
             }               
          }
-    }                                    
+    }  
+    */                                  
 
     private void jButton2ActionPerformed(ActionEvent evt) {                                         
        this.dispose();

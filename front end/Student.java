@@ -1,16 +1,9 @@
-
 import java.util.ArrayList;
-
-
 public class Student {
-    
-    
     public static ArrayList <Student> student_list = new ArrayList<>();
-    
     public static void addStudent(Student s){
        student_list.add(s);
    }
-    
     String roll;
     String name;
     String pwd;
