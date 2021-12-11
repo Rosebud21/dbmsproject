@@ -2,7 +2,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 public class student_page extends JFrame {
 
@@ -110,6 +112,33 @@ public class student_page extends JFrame {
         initTab4(s.courses[3]);
         initTab5(s.courses[4]);
     }
+    private ArrayList<String[]> getAssignments(String subcode){
+        ArrayList<String[]> assignments = new ArrayList<>();
+        try {
+            URL urlForGetRequest = new URL("http://localhost:5499/assignments/?subcode="+subcode);
+            String readLine = null;
+            HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+            conection.setRequestMethod("GET");
+            int responseCode = conection.getResponseCode();
+            System.out.println(responseCode);
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                while ((readLine = in .readLine()) != null) {
+                    String [] assignment = readLine.split(" ");
+                    assignments.add(assignment);
+                    response.append(readLine);
+                } 
+                in .close();
+            } else {
+                System.out.println("GET NOT WORKED");
+            }
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return assignments;
+    }
 
     private void initTab1(Course c){
         l5.setText(c.name);
@@ -125,11 +154,21 @@ public class student_page extends JFrame {
         
         //assignments
         DefaultTableModel model1 = (DefaultTableModel) table6.getModel();
-        int j = 1;
-        for (Assignment A : c.assign_list){
-           model1.insertRow(0, new Object[]{j, A.title, A.description, A.deadline});
-           i++;
+        ArrayList<String [] >Assignments = getAssignments(c.code.replace(" ", "-"));
+        i = 1;
+        for( String [] assignment: Assignments){
+            model1.insertRow(0, new Object[]{i, 
+                assignment[2], 
+                assignment[3], 
+                assignment[4]}
+            );
+            i++;
         }
+        // int j = 1;
+        // for (Assignment A : c.assign_list){
+        //    model1.insertRow(0, new Object[]{j, A.title, A.description, A.deadline});
+        //    i++;
+        // }
     }
     
     private void initTab2(Course c){
@@ -147,11 +186,21 @@ public class student_page extends JFrame {
         
         //assignments
         DefaultTableModel model1 = (DefaultTableModel) table2.getModel();
-        int j = 1;
-        for (Assignment A : c.assign_list){
-           model1.insertRow(0, new Object[]{j, A.title, A.description, A.deadline});
-           i++;
+        ArrayList<String [] >Assignments = getAssignments(c.code.replace(" ", "-"));
+        i = 1;
+        for( String [] assignment: Assignments){
+            model1.insertRow(0, new Object[]{i, 
+                assignment[2], 
+                assignment[3], 
+                assignment[4]}
+            );
+            i++;
         }
+        // int j = 1;
+        // for (Assignment A : c.assign_list){
+        //    model1.insertRow(0, new Object[]{j, A.title, A.description, A.deadline});
+        //    i++;
+        // }
     }
     
     private void initTab3(Course c){
@@ -168,11 +217,21 @@ public class student_page extends JFrame {
         
         //assignments
         DefaultTableModel model1 = (DefaultTableModel) table3.getModel();
-        int j = 1;
-        for (Assignment A : c.assign_list){
-           model1.insertRow(0, new Object[]{j, A.title, A.description, A.deadline});
-           i++;
+        ArrayList<String [] >Assignments = getAssignments(c.code.replace(" ", "-"));
+        i = 1;
+        for( String [] assignment: Assignments){
+            model1.insertRow(0, new Object[]{i, 
+                assignment[2], 
+                assignment[3], 
+                assignment[4]}
+            );
+            i++;
         }
+        // int j = 1;
+        // for (Assignment A : c.assign_list){
+        //    model1.insertRow(0, new Object[]{j, A.title, A.description, A.deadline});
+        //    i++;
+        // }
     }
 
     private void initTab4(Course c){
@@ -190,11 +249,21 @@ public class student_page extends JFrame {
         
         //assignments
         DefaultTableModel model1 = (DefaultTableModel) table4.getModel();
-        int j = 1;
-        for (Assignment A : c.assign_list){
-           model1.insertRow(0, new Object[]{j, A.title, A.description, A.deadline});
-           i++;
+        ArrayList<String [] >Assignments = getAssignments(c.code.replace(" ", "-"));
+        i = 1;
+        for( String [] assignment: Assignments){
+            model1.insertRow(0, new Object[]{i, 
+                assignment[2], 
+                assignment[3], 
+                assignment[4]}
+            );
+            i++;
         }
+        // int j = 1;
+        // for (Assignment A : c.assign_list){
+        //    model1.insertRow(0, new Object[]{j, A.title, A.description, A.deadline});
+        //    i++;
+        // }
     }
     
     private void initTab5(Course c){
@@ -212,11 +281,21 @@ public class student_page extends JFrame {
         
         //assignments
         DefaultTableModel model1 = (DefaultTableModel) table5.getModel();
-        int j = 1;
-        for (Assignment A : c.assign_list){
-           model1.insertRow(0, new Object[]{j, A.title, A.description, A.deadline});
-           i++;
+        ArrayList<String [] >Assignments = getAssignments(c.code.replace(" ", "-"));
+        i = 1;
+        for( String [] assignment: Assignments){
+            model1.insertRow(0, new Object[]{i, 
+                assignment[2], 
+                assignment[3], 
+                assignment[4]}
+            );
+            i++;
         }
+        // int j = 1;
+        // for (Assignment A : c.assign_list){
+        //    model1.insertRow(0, new Object[]{j, A.title, A.description, A.deadline});
+        //    i++;
+        // }
     }
     
     //INITIALIZING

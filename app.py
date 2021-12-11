@@ -2,6 +2,7 @@ from flask import Flask
 from flask import request
 import flask
 from werkzeug.wrappers import response
+from DB.assignment_table import assignment
 from DB.connection import DB
 database = DB()
 app = Flask(__name__)
@@ -12,12 +13,7 @@ def welcome():
 
 @app.route('/student/login/', methods=['GET', 'POST'])
 def slogin():
-    # print("id = ",request.args.to_dict(flat=False)['id'][0])
-    # print("pass = ",request.args.to_dict(flat=False)['pass'][0])
-    # print(database.get_students())
     for students in database.get_students():
-        # print(request.args.to_dict(flat=False)['id'][0],students['rollnum'],request.args.to_dict(flat=False)['id'][0]==students['rollnum'])
-        # print(request.args.to_dict(flat=False)['pass'][0]==students['password'])
         if(request.args.to_dict(flat=False)['id'][0]==students['rollnum'] and request.args.to_dict(flat=False)['pass'][0]==students['password']):
             res =  flask.Response("True")
             res.headers['name'] = students['name']
@@ -40,6 +36,58 @@ def test():
     students['branch'] = request.args.to_dict(flat=False)['branch'][0]
     return str(database.insert_students(students))
 
+@app.route('/faculty/login/', methods=['GET', 'POST'])
+def flogin():
+    for faculty in database.get_faculty():
+        if(request.args.to_dict(flat=False)['eid'][0]==faculty['eid'] and request.args.to_dict(flat=False)['pass'][0]==faculty['password']):
+            res =  flask.Response("True")
+            res.headers['name'] = faculty['name']
+            res.headers['eid'] = faculty['eid']
+            res.headers['password'] = faculty['password']
+            res.headers['branch'] = faculty['branch']
+            print("Valid Login!!")
+            return res
+    res =  flask.Response("False")
+    print("Invalid Login!!")
+    return res
+
+
+
+
+@app.route('/assignments/', methods=['GET'])
+def get_assignments():
+    out = ""
+    # print(request.headers['Subcode'])
+    for assignment in database.get_assignments("'"+request.args.to_dict(flat=False)['subcode'][0].replace("-"," ")+"'"):
+        out += str(assignment['sno']).replace(" ","-")+" "
+        out += str(assignment['subcode']).replace(" ","-")+" "
+        out += str(assignment['title']).replace(" ","-")+" "
+        out += str(assignment['description']).replace(" ","-")+" "
+        out += str(assignment['deadline']).replace(" ","-")+"\n"
+    res =  flask.Response(out)
+    return res
+@app.route('/assignments/', methods=['POST'])
+def Create_assignments():
+    assignment = {}
+    assignment['subcode'] = request.headers['Subcode']
+    assignment['title'] = request.headers['Title']
+    assignment['description'] = request.headers['Description']
+    assignment['deadline'] = request.headers['Deadline']
+    print(assignment)
+    return str(database.create_assignments(assignment))
+    # subcode = request.args.to_dict(flat=False)['subcode'][0].replace("-"," ")
+    # title = request.args.to_dict(flat=False)['title'][0].replace("-"," ")
+    # description = request.args.to_dict(flat=False)['description'][0].replace("-"," ")
+    # deadline = request.args.to_dict(flat=False)['deadline'][0].replace("-"," ")
+    # out = ""
+    # for assignment in database.get_assignments("'"+request.args.to_dict(flat=False)['subcode'][0].replace("-"," ")+"'"):
+    #     out += str(assignment['sno']).replace(" ","-")+" "
+    #     out += str(assignment['subcode']).replace(" ","-")+" "
+    #     out += str(assignment['title']).replace(" ","-")+" "
+    #     out += str(assignment['desciption']).replace(" ","-")+" "
+    #     out += str(assignment['deadline']).replace(" ","-")+"\n"
+    # res =  flask.Response(out)
+    # return 'True'
 # @app.route()
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5499)

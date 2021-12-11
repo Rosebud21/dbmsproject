@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
+import java.io.*;
+import java.net.*;
+import java.util.ArrayList;
 
 public class addAssignment extends JFrame implements ActionListener {
 
@@ -84,51 +88,82 @@ public class addAssignment extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == addButton) {
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource() == addButton) {
         	String a_title = title_field.getText();
         	String a_desc = desc_field.getText();
         	String a_deadline = deadline_field.getText();
-
-        
+            try {
+                URL urlForGetRequest = new URL("http://localhost:5499/assignments/");
+                String readLine = null;
+                HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+                conection.setRequestMethod("POST");
+                conection.setRequestProperty("Subcode", cb.getSelectedItem().toString());
+                conection.setRequestProperty("Title", a_title);
+                conection.setRequestProperty("Description", a_desc);
+                conection.setRequestProperty("Deadline", a_deadline);
+                int responseCode = conection.getResponseCode();
+                System.out.println(responseCode);
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
+                    ArrayList<String[]> assignments = new ArrayList<>();
+                    StringBuffer response = new StringBuffer();
+                    while ((readLine = in .readLine()) != null) {
+                        String [] assignment = readLine.split(" ");
+                        assignments.add(assignment);
+                        response.append(readLine);
+                    } 
+                    in .close();
+                    String status = response.toString();
+                    System.out.println(status);
+                    //resetting all textfields
+                    JOptionPane.showMessageDialog(null, "Assignment added!");
+                    title.setText("");
+                    desc.setText("");
+                    deadline.setText("");
+                } else {
+                    System.out.println("GET NOT WORKED");
+                    JOptionPane.showMessageDialog(null, "Backend Error!");
+                }
+            } 
+            catch (IOException e) {
+                e.printStackTrace();
+            }
         	//creating new assignment object
-            Assignment a = new Assignment(a_title, a_desc, a_deadline);
+            // Assignment a = new Assignment(a_title, a_desc, a_deadline);
+            // //adding assignment to respective course
+            // if (cb.getSelectedItem().equals("CS 202")){
+            // 	Course DLDCA = Course.CSE[0];
+            // 	DLDCA.assign_list.add(a);
+            // }
+            // else if (cb.getSelectedItem().equals("CS 203")){
+            // 	Course DAA = Course.CSE[1];
+            // 	DAA.assign_list.add(a);
+            // }
+            // else if (cb.getSelectedItem().equals("CS 204")){
+            // 	Course OOP = Course.CSE[2];
+            // 	OOP.assign_list.add(a);
+            // }
+            // else if (cb.getSelectedItem().equals("CS 205")){
+            // 	Course TOC = Course.CSE[3];
+            // 	TOC.assign_list.add(a);
+            // }
 
-            //adding assignment to respective course
-            if (cb.getSelectedItem().equals("CS 202")){
-            	Course DLDCA = Course.CSE[0];
-            	DLDCA.assign_list.add(a);
-            }
-            else if (cb.getSelectedItem().equals("CS 203")){
-            	Course DAA = Course.CSE[1];
-            	DAA.assign_list.add(a);
-            }
-            else if (cb.getSelectedItem().equals("CS 204")){
-            	Course OOP = Course.CSE[2];
-            	OOP.assign_list.add(a);
-            }
-            else if (cb.getSelectedItem().equals("CS 205")){
-            	Course TOC = Course.CSE[3];
-            	TOC.assign_list.add(a);
-            }
 
-
-            //resetting all textfields
-            JOptionPane.showMessageDialog(null, "Assignment added!");
-        	title.setText("");
-        	desc.setText("");
-        	deadline.setText("");
+            // //resetting all textfields
+            // JOptionPane.showMessageDialog(null, "Assignment added!");
+        	// title.setText("");
+        	// desc.setText("");
+        	// deadline.setText("");
 
         }
 
-        if (e.getSource() == cancelButton) {
+        if (event.getSource() == cancelButton) {
             frame.dispose();
         } 
     }
 
     public static void main(String[] args){
-
     	addAssignment obj = new addAssignment();
     }
 

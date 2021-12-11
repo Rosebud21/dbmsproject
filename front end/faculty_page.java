@@ -5,6 +5,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.table.*;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 import java.lang.*;
 
 public class faculty_page extends JFrame 
@@ -77,40 +80,79 @@ public class faculty_page extends JFrame
         initTab3(f.courses[2]);
           
     }
-    
+    private ArrayList<String[]> getAssignments(String subcode){
+        ArrayList<String[]> assignments = new ArrayList<>();
+        try {
+            URL urlForGetRequest = new URL("http://localhost:5499/assignments/?subcode="+subcode);
+            String readLine = null;
+            HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+            conection.setRequestMethod("GET");
+            int responseCode = conection.getResponseCode();
+            System.out.println(responseCode);
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                while ((readLine = in .readLine()) != null) {
+                    String [] assignment = readLine.split(" ");
+                    assignments.add(assignment);
+                    response.append(readLine);
+                } 
+                in .close();
+            } else {
+                System.out.println("GET NOT WORKED");
+            }
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return assignments;
+    }
     private void initTab1(Course c){
         l5.setText(c.name);
-        
         //assignments
         DefaultTableModel model1 = (DefaultTableModel) table1.getModel();
+        ArrayList<String [] >Assignments = getAssignments(c.code.replace(" ", "-"));
         int i = 1;
-        for (Assignment A : c.assign_list){
-           model1.insertRow(0, new Object[]{i, A.title, A.description, A.deadline});
-           i++;
+        for( String [] assignment: Assignments){
+            model1.insertRow(0, new Object[]{i, 
+                assignment[2], 
+                assignment[3], 
+                assignment[4]}
+            );
+            i++;
         }
     }
     
     private void initTab2(Course c){
         l9.setText(c.name);
-        
         //assignments
         DefaultTableModel model1 = (DefaultTableModel) table2.getModel();
+        ArrayList<String [] >Assignments = getAssignments(c.code.replace(" ", "-"));
         int i = 1;
-        for (Assignment A : c.assign_list){
-           model1.insertRow(0, new Object[]{i, A.title, A.description, A.deadline});
-           i++;
+        for( String [] assignment: Assignments){
+            model1.insertRow(0, new Object[]{i, 
+                assignment[2], 
+                assignment[3], 
+                assignment[4]}
+            );
+            i++;
         }
     }
     
     private void initTab3(Course c){
         l13.setText(c.name);
-        
         //assignments
         DefaultTableModel model1 = (DefaultTableModel) table3.getModel();
+
+        ArrayList<String [] >Assignments = getAssignments(c.code.replace(" ", "-"));
         int i = 1;
-        for (Assignment A : c.assign_list){
-           model1.insertRow(0, new Object[]{i, A.title, A.description, A.deadline});
-           i++;
+        for( String [] assignment: Assignments){
+            model1.insertRow(0, new Object[]{i, 
+                assignment[2], 
+                assignment[3], 
+                assignment[4]}
+            );
+            i++;
         }
     }
 

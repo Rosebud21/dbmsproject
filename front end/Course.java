@@ -18,9 +18,9 @@ public class Course {
         this.year = year;
         this.branch = branch;
         
-        for (Assignment a: Assignment.sample){
-            this.assign_list.add(a);
-        }
+        // for (Assignment a: Assignment.sample){
+        //     this.assign_list.add(a);
+        // }
         for (Material m: Material.sample){
             this.mat_list.add(m);
         }
