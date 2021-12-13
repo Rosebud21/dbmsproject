@@ -92,10 +92,40 @@ Architecture for Virtual Classroom
 	ii. CONNECTOR DIAGRAM
 		![api python](https://user-images.githubusercontent.com/89914089/145883048-45d7614f-b5d2-4e84-b3c5-755929610411.jpg)
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	iii. TREE DIAGRAM PICTURE
              ![tree diagram ](https://user-images.githubusercontent.com/89914089/145883067-aa8f4a54-b2f3-472a-8cc0-937d00367e34.jpg)
 	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
+	       
 	iV. ER Diagram 
-	[erdiagram (1).pdf](https://github.com/Rosebud21/dbmsproject/files/7706745/erdiagram.1.pdf)
+	
 
  
