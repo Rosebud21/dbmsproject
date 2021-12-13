@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.util.*;
+import java.io.*;
+import java.net.*;
+import java.util.ArrayList;
 public class addMaterials extends JFrame implements ActionListener 
 {
 	JFrame frame = new JFrame ();
@@ -80,51 +83,84 @@ public class addMaterials extends JFrame implements ActionListener
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e)
+	public void actionPerformed(ActionEvent event)
 	{
-		if (e.getSource() == upload)
+		if (event.getSource() == upload)
 		{
 			String m_date = date_field.getText();
 			String m_filename = filename_field.getText();
-			
-			Material m = new Material (m_date, m_filename);
+			try {
+                URL urlForGetRequest = new URL("http://localhost:5499/material/");
+                String readLine = null;
+                HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+                conection.setRequestMethod("POST");
+                conection.setRequestProperty("Subcode", cb.getSelectedItem().toString());
+                conection.setRequestProperty("Filename", m_filename);
+                conection.setRequestProperty("Date", m_date);
+                int responseCode = conection.getResponseCode();
+                System.out.println(responseCode);
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
+                    ArrayList<String[]> assignments = new ArrayList<>();
+                    StringBuffer response = new StringBuffer();
+                    while ((readLine = in .readLine()) != null) {
+                        String [] assignment = readLine.split(" ");
+                        assignments.add(assignment);
+                        response.append(readLine);
+                    } 
+                    in .close();
+                    String status = response.toString();
+                    System.out.println(status);
+                    //resetting all textfields
+                    JOptionPane.showMessageDialog (null,"Upload Successful!");
+					date.setText("");
+					filename.setText("");
+                } else {
+                    System.out.println("GET NOT WORKED");
+                    JOptionPane.showMessageDialog(null, "Backend Error!");
+                }
+            } 
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+			// Material m = new Material (m_date, m_filename);
 		
-			if (cb.getSelectedItem().equals("CS 202"))
-			{
-            			Course DLDCA = Course.CSE[0];
-            			DLDCA.mat_list.add(m);
-          		}
-            		else if (cb.getSelectedItem().equals("CS 203"))
-			{
-            			Course DAA = Course.CSE[1];
-            			DAA.mat_list.add(m);
-            		}
-            		else if (cb.getSelectedItem().equals("CS 204"))
-			{
-            			Course OOP = Course.CSE[2];
-            			OOP.mat_list.add(m);
-            		}
-            		else if (cb.getSelectedItem().equals("CS 205"))
-			{
-            			Course TOC = Course.CSE[3];
-            			TOC.mat_list.add(m);
-            		}
+			// if (cb.getSelectedItem().equals("CS 202"))
+			// {
+            // 			Course DLDCA = Course.CSE[0];
+            // 			DLDCA.mat_list.add(m);
+          	// 	}
+            // 		else if (cb.getSelectedItem().equals("CS 203"))
+			// {
+            // 			Course DAA = Course.CSE[1];
+            // 			DAA.mat_list.add(m);
+            // 		}
+            // 		else if (cb.getSelectedItem().equals("CS 204"))
+			// {
+            // 			Course OOP = Course.CSE[2];
+            // 			OOP.mat_list.add(m);
+            // 		}
+            // 		else if (cb.getSelectedItem().equals("CS 205"))
+			// {
+            // 			Course TOC = Course.CSE[3];
+            // 			TOC.mat_list.add(m);
+            // 		}
 
-			JOptionPane.showMessageDialog (null,"Upload Successful!");
-			date.setText("");
-			filename.setText("");
+			// JOptionPane.showMessageDialog (null,"Upload Successful!");
+			// date.setText("");
+			// filename.setText("");
 		}
-		else if (e.getSource()==cancel)
+		else if (event.getSource()==cancel)
 		{
 			frame.dispose();
 		}
 	}
 
-	/*
+
 	public static void main (String[] args)
 	{
 		addMaterials obj = new addMaterials();
 	}
-	*/
+	
 
 }

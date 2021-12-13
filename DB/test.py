@@ -67,7 +67,7 @@ def create_faculty_table():
     command+=" )"
     cur.execute(command)
     conn.commit()
-create_faculty_table()
+# create_faculty_table()
 # GetTableList()
 def add_dummy_faculty():
     sql_insert = "INSERT INTO "
@@ -76,7 +76,7 @@ def add_dummy_faculty():
     cur.execute(sql_insert,("fac1","001","CSE","yyy"))
     cur.execute(sql_insert,("fac2","002","EEE","yyy"))
     conn.commit()
-add_dummy_faculty()
+# add_dummy_faculty()
 
 def create_assignment_table():
     # subcode,title,desciption,deadline
@@ -92,8 +92,8 @@ def create_assignment_table():
     command+=" )"
     cur.execute(command)
     conn.commit()
-create_assignment_table()
-GetTableList()
+# create_assignment_table()
+# GetTableList()
 def add_dummy_assignment():
     sql_insert = "INSERT INTO "
     sql_insert+=  "assignments" 
@@ -111,24 +111,55 @@ def add_dummy_assignment():
     cur.execute(sql_insert,("CS 204","CSE-homework 2", "Lab assignment" , "20 May"))
     cur.execute(sql_insert,("CS 204","CSE-homework 3", "Lab assignment" , "29 May"))
 
-    cur.execute(sql_insert,("CS 205","CSE-homework 2", "Lab assignment" , "20 May"))
-    cur.execute(sql_insert,("CS 205","CSE-homework 3", "Lab assignment" , "29 May"))
+    cur.execute(sql_insert,("ES 205","CSE-homework 2", "Lab assignment" , "20 May"))
+    cur.execute(sql_insert,("ES 205","CSE-homework 3", "Lab assignment" , "29 May"))
 
-    cur.execute(sql_insert,("ES 211","CSE-homework 2", "Lab assignment" , "20 May"))
-    cur.execute(sql_insert,("ES 204","CSE-homework 3", "Lab assignment" , "29 May"))
+    cur.execute(sql_insert,("CS 211","CSE-homework 2", "Lab assignment" , "20 May"))
+    cur.execute(sql_insert,("CS 204","CSE-homework 3", "Lab assignment" , "29 May"))
     
     cur.execute(sql_insert,("EE 205","ECE-homework 1", "Submit tutorial", "11 May"))
     cur.execute(sql_insert,("EE 205","ECE-homework 2", "Lab assignment" , "21 May"))
     cur.execute(sql_insert,("EE 205","ECE-homework 3", "Lab assignment" , "30 May"))
     conn.commit()
+# add_dummy_assignment()
+
+def create_material_table():
+    command = "CREATE TABLE "
+    command+= "material" 
+    command+=" ("
+    command+=" sno SERIAL PRIMARY KEY,"
+    command+=" subcode VARCHAR(32) NOT NULL,"
+    command+=" filename VARCHAR(255) NOT NULL,"
+    command+=" date VARCHAR(32) NOT NULL"
+    command+=" )"
+    cur.execute(command)
+    conn.commit()
+
+def add_dummy_assignment():
+    sql_insert = "INSERT INTO "
+    sql_insert+=  "material" 
+    sql_insert+= "(subcode,filename,date) VALUES(%s,%s,%s);"
+    cur.execute(sql_insert,("CS 202","Lecture 1 - 5 Notes.pdf", "29 May"))
+    cur.execute(sql_insert,("CS 202","Lecture 2 - 10 Notes.pdf", "30 May"))
+    cur.execute(sql_insert,("CS 202","Recording.mp4", "2 April"))
+
+    cur.execute(sql_insert,("CS 203","Lecture 1 - 5 Notes.pdf", "29 May"))
+    cur.execute(sql_insert,("CS 203","Lecture 2 - 10 Notes.pdf", "30 May"))
+    cur.execute(sql_insert,("CS 203","Recording.mp4", "2 April"))
+
+    cur.execute(sql_insert,("CS 204","Lecture 1 - 5 Notes.pdf", "29 May"))
+    cur.execute(sql_insert,("CS 204","Lecture 2 - 10 Notes.pdf", "30 May"))
+    cur.execute(sql_insert,("CS 204","Recording.mp4", "2 April"))
+
+    cur.execute(sql_insert,("CS 205","Lecture 1 - 5 Notes.pdf", "29 May"))
+    cur.execute(sql_insert,("CS 205","Recording.mp4", "2 April"))
+
+    cur.execute(sql_insert,("ES 211","Recording.mp4", "2 April"))
+    conn.commit()
+
+create_material_table()
+GetTableList()
 add_dummy_assignment()
-
-
-
-
-
-
-
 
 
 
@@ -136,10 +167,10 @@ def create_subjects_table():
     command = "CREATE TABLE "
     command+= "subjects" 
     command+=" ("
-    command+=" name VARCHAR(32) NOT NULL"
-    command+=" code VARCHAR(255) NOT NULL PRIMARY KEY,"
-    command+=" branch VARCHAR(32) NOT NULL"
-    command+=" year VARCHAR(32) NOT NULL"
+    command+=" sno SERIAL PRIMARY KEY,"
+    command+=" subcode VARCHAR(32) NOT NULL,"
+    command+=" filename VARCHAR(255) NOT NULL,"
+    command+=" date VARCHAR(32) NOT NULL"
     command+=" )"
     cur.execute(command)
     conn.commit()

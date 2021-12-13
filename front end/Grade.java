@@ -5,6 +5,10 @@ import javax.swing.table.*;
 import java.lang.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.util.*;
+import java.io.*;
+import java.net.*;
+import java.util.ArrayList;
 
 public class Grade extends JFrame {
 
@@ -17,13 +21,39 @@ public class Grade extends JFrame {
       private JTable jTable1;
       private JTextField jgrade; 
 
-
+      private ArrayList<String[]> getstudents(String subcode){
+        ArrayList<String[]> assignments = new ArrayList<>();
+        try {
+            URL urlForGetRequest = new URL("http://localhost:5499/assignments/?subcode="+subcode);
+            String readLine = null;
+            HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+            conection.setRequestMethod("GET");
+            int responseCode = conection.getResponseCode();
+            System.out.println(responseCode);
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                while ((readLine = in .readLine()) != null) {
+                    String [] assignment = readLine.split(" ");
+                    assignments.add(assignment);
+                    response.append(readLine);
+                } 
+                in .close();
+            } else {
+                System.out.println("GET NOT WORKED");
+            }
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return assignments;
+    }
     public Grade() {
         initComponents();
          DefaultTableModel model=(DefaultTableModel)jTable1.getModel();
-         for(Student s : Student.student_list){ 
-             model.insertRow(0,new Object[]{s.roll,s.name,s.grade});     
-         }  
+        //  for(Student s : Student.student_list){ 
+        //      model.insertRow(0,new Object[]{s.roll,s.name,s.grade});     
+        //  }  
     }
                       
     private void initComponents() {
@@ -175,13 +205,13 @@ public class Grade extends JFrame {
         selectedRow = jTable1.getSelectedRow();
       String rollno=jTable1.getValueAt(selectedRow,0).toString();
         String g=jgrade.getText();
-        for(Student s : Student.student_list){
-                  if(s.roll.equals(rollno))
-                  {  
-                      s.grade=Integer.parseInt(g);
-                      model.setValueAt(jgrade.getText(), i, 2);
-                  }                
-         }     
+        // for(Student s : Student.student_list){
+        //           if(s.roll.equals(rollno))
+        //           {  
+        //               s.grade=Integer.parseInt(g);
+        //               model.setValueAt(jgrade.getText(), i, 2);
+        //           }                
+        //  }     
     }                                        
 
     /*

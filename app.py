@@ -11,6 +11,21 @@ app = Flask(__name__)
 def welcome():
     return "Hello World!"
 
+
+
+@app.route('/student/getall/', methods=['GET'])
+def get_students():
+    out = ""
+    # print(request.headers['Subcode'])
+    for student in database.get_students():
+        out += str(student['name']).replace(" ","-")+" "
+        out += str(student['rollnum']).replace(" ","-")+" "
+        out += str(student['year']).replace(" ","-")+" "
+        out += str(student['grade']).replace(" ","-")+" "
+        out += str(student['attendance']).replace(" ","-")+" "
+        out += str(student['branch']).replace(" ","-")+"\n"
+    res =  flask.Response(out)
+    return res
 @app.route('/student/login/', methods=['GET', 'POST'])
 def slogin():
     for students in database.get_students():
@@ -35,6 +50,9 @@ def test():
     students['year'] = request.args.to_dict(flat=False)['year'][0]
     students['branch'] = request.args.to_dict(flat=False)['branch'][0]
     return str(database.insert_students(students))
+
+
+
 
 @app.route('/faculty/login/', methods=['GET', 'POST'])
 def flogin():
@@ -73,21 +91,28 @@ def Create_assignments():
     assignment['title'] = request.headers['Title']
     assignment['description'] = request.headers['Description']
     assignment['deadline'] = request.headers['Deadline']
-    print(assignment)
+    # print(assignment)
     return str(database.create_assignments(assignment))
-    # subcode = request.args.to_dict(flat=False)['subcode'][0].replace("-"," ")
-    # title = request.args.to_dict(flat=False)['title'][0].replace("-"," ")
-    # description = request.args.to_dict(flat=False)['description'][0].replace("-"," ")
-    # deadline = request.args.to_dict(flat=False)['deadline'][0].replace("-"," ")
-    # out = ""
-    # for assignment in database.get_assignments("'"+request.args.to_dict(flat=False)['subcode'][0].replace("-"," ")+"'"):
-    #     out += str(assignment['sno']).replace(" ","-")+" "
-    #     out += str(assignment['subcode']).replace(" ","-")+" "
-    #     out += str(assignment['title']).replace(" ","-")+" "
-    #     out += str(assignment['desciption']).replace(" ","-")+" "
-    #     out += str(assignment['deadline']).replace(" ","-")+"\n"
-    # res =  flask.Response(out)
-    # return 'True'
-# @app.route()
+
+
+@app.route('/material/', methods=['GET'])
+def get_materials():
+    out = ""
+    # print(request.headers['Subcode'])
+    for material in database.get_material("'"+request.headers['Subcode']+"'"):
+        out += str(material['sno']).replace(" ","-")+" "
+        out += str(material['subcode']).replace(" ","-")+" "
+        out += str(material['filename']).replace(" ","-")+" "
+        out += str(material['date']).replace(" ","-")+"\n"
+    res =  flask.Response(out)
+    return res
+@app.route('/material/', methods=['POST'])
+def Create_materials():
+    material = {}
+    material['subcode'] = request.headers['Subcode']
+    material['filename'] = request.headers['Filename']
+    material['date'] = request.headers['Date']
+    return str(database.create_material(material))
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5499)

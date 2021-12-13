@@ -28,6 +28,8 @@ class student:
             student["branch"] = row[2]
             student["year"] = row[3]
             student["password"] = row[4]
+            student["grade"] = row[5]
+            student["attendance"] = row[6]
             student_list.append(student)
         # print(out)
         return student_list

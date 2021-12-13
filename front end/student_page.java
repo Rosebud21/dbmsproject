@@ -81,9 +81,9 @@ public class student_page extends JFrame {
     public student_page(Student s) {
         initComponents();
 
-        for (Student stu: Student.student_list){
-            System.out.println(stu.name);
-        }
+        // for (Student stu: Student.student_list){
+        //     System.out.println(stu.name);
+        // }
 
         l3.setText("Name: " + s.name);
         l4.setText("Roll no: " + s.roll);
@@ -111,6 +111,34 @@ public class student_page extends JFrame {
         initTab3(s.courses[2]);
         initTab4(s.courses[3]);
         initTab5(s.courses[4]);
+    }
+    private ArrayList<String[]> getMaterials(String subcode){
+        ArrayList<String[]> assignments = new ArrayList<>();
+        try {
+            URL urlForGetRequest = new URL("http://localhost:5499/material/");
+            String readLine = null;
+            HttpURLConnection conection = (HttpURLConnection) urlForGetRequest.openConnection();
+            conection.setRequestProperty("Subcode",subcode);
+            conection.setRequestMethod("GET");
+            int responseCode = conection.getResponseCode();
+            System.out.println(responseCode);
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                BufferedReader in = new BufferedReader(new InputStreamReader(conection.getInputStream()));
+                StringBuffer response = new StringBuffer();
+                while ((readLine = in .readLine()) != null) {
+                    String [] assignment = readLine.split(" ");
+                    assignments.add(assignment);
+                    response.append(readLine);
+                } 
+                in .close();
+            } else {
+                System.out.println("GET NOT WORKED");
+            }
+        } 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return assignments;
     }
     private ArrayList<String[]> getAssignments(String subcode){
         ArrayList<String[]> assignments = new ArrayList<>();
@@ -147,10 +175,18 @@ public class student_page extends JFrame {
         //course material
         DefaultTableModel model = (DefaultTableModel) table1.getModel();
         int i = 1;
-        for (Material M : c.mat_list){
-           model.insertRow(0, new Object[]{i, M.filename, M.date});
-           i++;
+        ArrayList<String [] >Materials = getMaterials(c.code);
+        for( String [] material: Materials){
+            model.insertRow(0, new Object[]{i, 
+                material[2], 
+                material[3]}
+            );
+            i++;
         }
+        // for (Material M : c.mat_list){
+        //    model.insertRow(0, new Object[]{i, M.filename, M.date});
+        //    i++;
+        // }
         
         //assignments
         DefaultTableModel model1 = (DefaultTableModel) table6.getModel();
@@ -178,10 +214,19 @@ public class student_page extends JFrame {
         //course material
         DefaultTableModel model = (DefaultTableModel) table7.getModel();
         int i = 1;
-        for (Material M : c.mat_list){
-           model.insertRow(0, new Object[]{i, M.filename, M.date});
-           i++;
+        ArrayList<String [] >Materials = getMaterials(c.code);
+        for( String [] material: Materials){
+            model.insertRow(0, new Object[]{i, 
+                material[2], 
+                material[3]}
+            );
+            i++;
         }
+        // int i = 1;
+        // for (Material M : c.mat_list){
+        //    model.insertRow(0, new Object[]{i, M.filename, M.date});
+        //    i++;
+        // }
     
         
         //assignments
@@ -210,10 +255,19 @@ public class student_page extends JFrame {
         //course material
         DefaultTableModel model = (DefaultTableModel) table8.getModel();
         int i = 1;
-        for (Material M : c.mat_list){
-           model.insertRow(0, new Object[]{i, M.filename, M.date});
-           i++;
+        ArrayList<String [] >Materials = getMaterials(c.code);
+        for( String [] material: Materials){
+            model.insertRow(0, new Object[]{i, 
+                material[2], 
+                material[3]}
+            );
+            i++;
         }
+        // int i = 1;
+        // for (Material M : c.mat_list){
+        //    model.insertRow(0, new Object[]{i, M.filename, M.date});
+        //    i++;
+        // }
         
         //assignments
         DefaultTableModel model1 = (DefaultTableModel) table3.getModel();
@@ -241,10 +295,19 @@ public class student_page extends JFrame {
         //course material
         DefaultTableModel model = (DefaultTableModel) table9.getModel();
         int i = 1;
-        for (Material M : c.mat_list){
-           model.insertRow(0, new Object[]{i, M.filename, M.date});
-           i++;
+        ArrayList<String [] >Materials = getMaterials(c.code);
+        for( String [] material: Materials){
+            model.insertRow(0, new Object[]{i, 
+                material[2], 
+                material[3]}
+            );
+            i++;
         }
+        // int i = 1;
+        // for (Material M : c.mat_list){
+        //    model.insertRow(0, new Object[]{i, M.filename, M.date});
+        //    i++;
+        // }
     
         
         //assignments
@@ -273,10 +336,19 @@ public class student_page extends JFrame {
         //course material
         DefaultTableModel model = (DefaultTableModel) table10.getModel();
         int i = 1;
-        for (Material M : c.mat_list){
-           model.insertRow(0, new Object[]{i, M.filename, M.date});
-           i++;
+        ArrayList<String [] >Materials = getMaterials(c.code);
+        for( String [] material: Materials){
+            model.insertRow(0, new Object[]{i, 
+                material[2], 
+                material[3]}
+            );
+            i++;
         }
+        // int i = 1;
+        // for (Material M : c.mat_list){
+        //    model.insertRow(0, new Object[]{i, M.filename, M.date});
+        //    i++;
+        // }
     
         
         //assignments
