@@ -90,9 +90,12 @@ Architecture for Virtual Classroom
 	   For the database, we will be implementing a database using mysql, consisting of tables ,schemas and multiple databases.
 	
 	ii. CONNECTOR DIAGRAM
-		(attached in the documentation directory as a jpeg with db image name)
+		![api python](https://user-images.githubusercontent.com/89914089/145883048-45d7614f-b5d2-4e84-b3c5-755929610411.jpg)
 		
 	iii. TREE DIAGRAM PICTURE
-               (attached in the documentation directory as a jpg with this name)
+             ![tree diagram ](https://user-images.githubusercontent.com/89914089/145883067-aa8f4a54-b2f3-472a-8cc0-937d00367e34.jpg)
+	       
+	iV. ER Diagram 
+	[erdiagram (1).pdf](https://github.com/Rosebud21/dbmsproject/files/7706745/erdiagram.1.pdf)
 
  
