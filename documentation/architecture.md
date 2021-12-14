@@ -64,41 +64,51 @@ Architecture for Virtual Classroom
 		iii. DB Connectors
  
 	c.  Database
-       	
-
-           	1. Student tables: 
-            	Tables:
+            
             	1.1 Student_details:  contains the  student signup information
+			     - sno 	  int
                              - name       varchar (50)
                              - year       int 
                              - rollno     unique varchar, primary key 
-                             - course     varchar (cse or eee) (also used to see faculty)
-                           
-            	1.2 Student_login: contains the login essentials          
-                            - rollno        unique varchar, foreign key(connection between two tables) 
-                            - pwd           varchar
-		1.3 Assignments: allows students to upload assignments that faculty can see 
-			    - course 
-			    - rollno
-			    - id
-			    - date
-			    - assignment 
-               
- 		2. Faculty tables :
- 		Tables:
-         	2.1 Faculty_details: contains the faculty details, used at login time. 
-              			- id      primary key unique varchar
-             			- course  varchar(cse or eee) 
+                             - branch     varchar (cse or eee) (also used to see faculty)
+			     - password   varchar (4)
+			    
+		1.2 Assignments: allows students to upload assignments that faculty can see 
+			    - subject_code
+			    - title
+			    - description
+			    - deadline
+ 		
+         	2.1 Faculty_table: contains the faculty details, used at login time. 
+				- sno 
+              			- eid      primary key unique varchar
+             			- branch  varchar(cse or eee) 
             			- name    varchar (50)
            		        - pwd     varchar (9)
+				
 		2.2  Faculty_grade: enables faculty to give students grades 
         			- roll no    foreign key  UNIQUE varchar (8) { uses student rollno as           primary key to display grade on page)}
          			- cgpa      int 
-		2.3 Course_materials:
-				- course		(foreign key)
-				- id			(primary key)
+				
+		2.3 material:
+				- subject_code		(foreign key)
+				- filename		
 				- date
-				- course_material
+			
+		2.4 Faculty subjects:
+				- eid
+				- subject_code
+				
+		3.1 Course_list:
+				- branch
+				- subject_code
+				- year
+				- name
+			
+		3.2 Academics:
+				- rollnum
+				- attendance
+				- grade 
  
  	d. Overview 
 
