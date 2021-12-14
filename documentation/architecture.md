@@ -5,6 +5,8 @@ Architecture for Virtual Classroom
 		Sahithi Josyula (19XJ1A0562)
 		Enuganti Manushree (19XJ1A0523)
 
+	Presentation link: https://docs.google.com/presentation/d/1ysWPOnYomY3ZNIFIUPEgvSlquU1M_l1M/edit#slide=id.gcfdc4ef3ad_2_19
+	
 	a. Frontend
 		i and ii. Pages and their Features 
 
