@@ -11,19 +11,24 @@ Architecture for Virtual Classroom
                 HOMEPAGE: This is the very first thing that appears when a user runs the application.
              	Here, you can choose between logging in as a student or a faculty member. 
              	Upon clicking either faculty or student you will be directed to the respective login page.
+		
         	STUDENT LOGIN PAGE:
           	-> The student will be asked to provide their student id/rollno .and password 
          	-> If the password and id are present in the database, and match the login requirements, the user will be directed to the student dashboard.
-         	-> The user can also find a signup option on the login page in  order to enroll themselves in a new course by providing more details (more about this in the student signup).
+         	-> The user can also find a signup option on the login page in  order to enroll themselves in a new course by providing more details (more about this in the 			    student signup).
+		
        		FACULTY LOGIN PAGE:
-        	-> A faculty member trying to login must enter their unique id and password in order to access their faculty dashboard. 
+        	-> A faculty member trying to login must enter their unique id and password in order to access their faculty dashboard.
+		
 		STUDENT SIGNUP PAGE:
         	-> A student can signup or enroll in their course and access course content.
        		-> They have to fill in the following fields: name, year, rollno, course, branch, password. 
        		-> After signing up a user will be able to access the student dashboard. 
+		
       		STUDENT DASHBOARD:
        		-> a student can view their courses as different tabs with the java tabbed pane.
-      		-> they can view the upcoming assignments and view their  course timetable.        
+      		-> they can view the upcoming assignments and view their  course timetable.   
+		
          	FACULTY DASHBOARD:
       		-> Faculty members can view their courses as tabbed panes similar to the student dashboard.
  		-> They can view their timetable for the day, their grades, and see what assignments they have due. 
@@ -41,20 +46,18 @@ Architecture for Virtual Classroom
 		    -> cursor- we create a cursor object which enables a cursor to be created.
 		    
 	b. Backend
-		i. API endpoints:
-		API's
-                     --> /hello/ 
-                       this api is use to test the api status it has GET and POST methods
+		i. API endpoints, incoming parameters, responses, and functions:
 
-                     - ->/student/login/
-                     this api is used to verify th student login. It takes the arguments 
-                      rollnumber and password and finds if the user is registered or not
+			/hello/ 
+                        This API is use to test the api status. It has GET and POST methods.
 
-                      --> /student/signup/
-                        this api is used to create a new student user 
-                         it takes the student details as arguments and sends it to DB connector to store it into the database
+                        /student/login/
+                        This API is used to verify th student login. It takes the arguments rollnumber and password and finds out if the user is registered or not. 
 
-                         -->/student/getall/
+                        /student/signup/
+                        This API is used to create a new student user. It takes the student details as arguments and sends it to DB connector to store it into the database.
+
+                         /student/getall/
  
 		
 		ii. Features
