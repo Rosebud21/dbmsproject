@@ -11,8 +11,6 @@ app = Flask(__name__)
 def welcome():
     return "Hello World!"
 
-
-
 @app.route('/student/getall/', methods=['GET'])
 def get_students():
     out = ""
