@@ -39,8 +39,24 @@ Architecture for Virtual Classroom
 		    -> sycopg2 is a PostgreSQL database adapter for the Python programming language.
 		    -> configure-confi.py helps in connecting with the database which is then imported into the connection.py
 		    -> cursor- we create a cursor object which enables a cursor to be created.
+		    
 	b. Backend
-		i. API endpoints
+		i. API endpoints:
+		API's
+                     --> /hello/ 
+                       this api is use to test the api status it has GET and POST methods
+
+                     - ->/student/login/
+                     this api is used to verify th student login. It takes the arguments 
+                      rollnumber and password and finds if the user is registered or not
+
+                      --> /student/signup/
+                        this api is used to create a new student user 
+                         it takes the student details as arguments and sends it to DB connector to store it into the database
+
+                         -->/student/getall/
+ 
+		
 		ii. Features
 		iii. DB Connectors
  
