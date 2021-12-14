@@ -108,9 +108,7 @@ Architecture for Virtual Classroom
 	       ![tree diagram ](https://user-images.githubusercontent.com/89914089/145884477-20008490-b921-49bd-99e2-1d934e5547c0.jpg)
 	       
 	       
-	       
-	       
-	       
+	       ![tree diagram ](https://user-images.githubusercontent.com/89914089/145980253-b1cf976b-a948-4520-bd88-e4b1fdf2b355.jpg)
 	       
 	       
 	       
