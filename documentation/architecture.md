@@ -129,3 +129,4 @@ Architecture for Virtual Classroom
 	
 
  
+![erdiagram](https://user-images.githubusercontent.com/89914089/145980099-8921de81-9679-4e06-a7c0-5210973d7262.jpg)
