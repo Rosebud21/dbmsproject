@@ -1,4 +1,5 @@
 import psycopg2
+
 class student:
     def __init__(self,DB):
         self.database = DB
