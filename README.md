@@ -1,7 +1,7 @@
 # dbmsproject
 sneha (572), sahithi(562), manushree(523) /virtual classroom
 
-Intro: This virtual classroom application is used as an interface between the student and faculty of MU. 
+Intro: This virtual classroom application is used as an interface between the student and faculty of MU. It ensures a dynamic exchange of data. 
 
 Why we built this project: our motivation
 Especially during the coronavirus pandemic, online platforms have proven to provide an enhanced academic experience for students and faculty. 
@@ -19,4 +19,6 @@ How to run our application:
       5.1 login with the credentials 102 and xxx to test the application 
       5.2 or signup
 6. If faculty, login with the credentials 001 and yyy. 
-7. Explore the many features that exist within the application! Faculty members can simply enter data into text fields in the assignments table and materials table to upload  content. Students can view grades that faculty uploads and see their timetable too!
+7. Explore the many features that exist within the application! Faculty members can simply enter data into text fields in the assignments table and materials table to upload  content. 
+8. Students can view said material and assignments posted by faculty on their respective pagesStudents can view grades that faculty uploads and see their timetable too!
+9. Finally to exit the application click on logout at top left corner.
