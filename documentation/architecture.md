@@ -29,12 +29,16 @@ Architecture for Virtual Classroom
  		-> They can view their timetable for the day, their grades, and see what assignments they have due. 
       
 		iii. DB connectors -
- 		   -> we will be implementing predefined python database apis which will be consistent and specific to the postgresql framework for databases that we have                          used.
+ 		   -> we will be implementing predefined python db apis which will be consistent and specific to the postgresql framework for databases that we have used.
 		   -> PostgreSQL --  psycopg, PyGresQL, and pyPgSQL
 		    ->we've used psycopg which is a python library to communicate with the postgresql server.
-                    ->The PostgreSQL can be integrated with Python using psycopg2 module. sycopg2 is a PostgreSQL database adapter for the Python programming language.
-		    -> configure-
-		    -> 
+                    -> PostgreSQL can be integrated with Python using psycopg2 module.
+		    -> import the sycopg2 moudule 
+		    -> import the confiparser module into the config.py program.
+		     -> confiparser gives the option to manage user-editable configuration files for an application.
+		    -> sycopg2 is a PostgreSQL database adapter for the Python programming language.
+		    -> configure-confi.py helps in connecting with the database which is then imported into the connection.py
+		    -> cursor- we create a cursor object which enables a cursor to be created.
 	b. Backend
 		i. API endpoints
 		ii. Features
