@@ -28,24 +28,20 @@ Architecture for Virtual Classroom
       		-> Faculty members can view their courses as tabbed panes similar to the student dashboard.
  		-> They can view their timetable for the day, their grades, and see what assignments they have due. 
       
-		iii. DB connectors - How we will connect My SQL(backend) with our front end (java)
- 		- First we import the library from our database then we import the class with a table model. 
-		- A catch block needs to be added here for errors and expectations. 
-		- Then the driver class needs to be loaded in which connection object should be created for My SQL. 
-		- A statement object should be created after. 
-		- Now we must  pass SQL queries through a table model after which all the executable queries are stated. 
-		- All the results for the queries passed are then stored in ResultSet. 
-		- And then a loop can be created to display the data from the database.
-
+		iii. DB connectors -
+ 		   -> we will be implementing predefined python database apis which will be consistent and specific to the postgresql framework for databases that we have                          used.
+		   -> PostgreSQL --  psycopg, PyGresQL, and pyPgSQL
+		    ->we've used psycopg to design this gui.
+                    ->The PostgreSQL can be integrated with Python using psycopg2 module. sycopg2 is a PostgreSQL database adapter for the Python programming language.
 	b. Backend
 		i. API endpoints
 		ii. Features
 		iii. DB Connectors
  
 	c.  Database
-       		We will be maintaining separate databases as that makes it easier for data abstraction and efficiency is optimised when we handle smaller tables.
+       	
 
-           	1. Student database: 
+           	1. Student tables: 
             	Tables:
             	1.1 Student_details:  contains the  student signup information
                              - name       varchar (50)
@@ -63,7 +59,7 @@ Architecture for Virtual Classroom
 			    - date
 			    - assignment 
                
- 		2. Faculty database
+ 		2. Faculty tables :
  		Tables:
          	2.1 Faculty_details: contains the faculty details, used at login time. 
               			- id      primary key unique varchar
@@ -87,7 +83,7 @@ Architecture for Virtual Classroom
 	It can get chaotic to keep track of course materials, projects, schedules, and deadlines without an application like this. 
 
 	i. We will be using a java gui based front end. Further, we will be connecting the java front end using java connectors and ensuring a dynamic data access and display mechanism.
-	   For the database, we will be implementing a database using mysql, consisting of tables ,schemas and multiple databases.
+	   For the database, we will be implementing a database using postgresql, consisting of tables ,schemas and  databases.
 	
 	ii. CONNECTOR DIAGRAM
 		
