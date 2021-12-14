@@ -18,4 +18,5 @@ How to run our application:
 5. If student, you can either
       5.1 login with the credentials 102 and xxx to test the application 
       5.2 or signup
- 6. If faculty, login with the credentials 001 and yyy. 
+6. If faculty, login with the credentials 001 and yyy. 
+7. Explore the many features that exist within the application! Faculty members can simply enter data into text fields in the assignments table and materials table to upload  content. Students can view grades that faculty uploads and see their timetable too!
