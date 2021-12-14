@@ -31,8 +31,10 @@ Architecture for Virtual Classroom
 		iii. DB connectors -
  		   -> we will be implementing predefined python database apis which will be consistent and specific to the postgresql framework for databases that we have                          used.
 		   -> PostgreSQL --  psycopg, PyGresQL, and pyPgSQL
-		    ->we've used psycopg to design this gui.
+		    ->we've used psycopg which is a python library to communicate with the postgresql server.
                     ->The PostgreSQL can be integrated with Python using psycopg2 module. sycopg2 is a PostgreSQL database adapter for the Python programming language.
+		    -> configure-
+		    -> 
 	b. Backend
 		i. API endpoints
 		ii. Features
