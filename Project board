@@ -15,4 +15,12 @@ PROJECT BOARD
 
 7. using python db connector for postgresql to integrate with front end.
 
+8. creating class assignment , class student, class faculty , class material that have imported the connectors 
+
+9. write code for student : insert data , make connection and commit. same with the faculty
+
+10. write connection code in the java code in assignments and materials to post assignments .
+
+
+
 
