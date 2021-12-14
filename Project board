@@ -1,12 +1,18 @@
 PROJECT BOARD 
 
-1. To connect mysql with the java gui frontend that we have 
-   With python apis and a postgresql db .
+1. To connect the java gui frontend that we already made with 
+  a python backend(apis) and a postgresql db to store data .
 
 2. Creating database called vclassroom that contains tables such as student signup , facuty login which interacts with the gui to insert , select and display data on the gui.
 
-3. creating an assignment tables that can store the assignments list in the data base after reading data from the faculty page.
+3. creating an assignment table that can store the assignments list in the data base after reading data from the faculty page.
 
 4. displaying data from the assignment table onto the student frame dashboard ensuring the dynamic display of content .
 
-5. 
+5. adding a materials table in the database to store values from the faculty page once they upoad.
+
+6. experimenting with python connectors and trying to establish a connection with postgresql.
+
+7. using python db connector for postgresql to integrate with front end.
+
+
